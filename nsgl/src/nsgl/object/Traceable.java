@@ -43,7 +43,7 @@ import java.io.IOException;
 
 import nsgl.service.Service;
 import nsgl.service.trace.Tracer;
-import nsgl.array.Vector;
+import nsgl.array.Array;
 /**
  * <p>Title: Traceable</p>
  *
@@ -52,7 +52,7 @@ import nsgl.array.Vector;
  */
 
 public class Traceable {
-	protected Vector<Tracer> tracers = new Vector<Tracer>();
+	protected Array<Tracer> tracers = new Array<Tracer>();
 	protected boolean tracing = false;
 	protected Object caller;
 	

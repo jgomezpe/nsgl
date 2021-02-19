@@ -1,6 +1,6 @@
 package nsgl.evolve.ga;
 import nsgl.array.Array;
-import nsgl.array.Vector;
+import nsgl.array.Shuffle;
 import nsgl.bit.random.Random;
 import nsgl.tagged.Tagged;
 import nsgl.search.selection.Selection;
@@ -36,9 +36,9 @@ public class GAVariation<T> implements Variation<T>{
 	@SuppressWarnings("unchecked")
 	@Override
 	public Tagged<T>[] apply(Tagged<T>... pop) {
-		Array.shuffle(pop);
+		Shuffle.apply(pop);
 		pop = selection.pick(pop.length, pop);
-        Vector<Tagged<T>> buffer = new Vector<Tagged<T>>();
+        Array<Tagged<T>> buffer = new Array<Tagged<T>>();
         int n = xover.arity();
         int m = pop.length / n;
         int k = 0;

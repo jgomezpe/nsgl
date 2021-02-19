@@ -28,7 +28,7 @@ public class Util {
         for( int i=0; i<n; i++ ){
             sum +=  x[i];
         }
-        if( !nsgl.real.Util.isZero(sum) ){
+        if( !nsgl.real.PrecisionOrder.isZero(sum) ){
             for (int i = 0; i < n; i++) {
                 x[i] /= sum;
             }
@@ -60,22 +60,4 @@ public class Util {
 	for( int i=0; i<n; i++ ) x[i] = v;
 	return x;
     }
-    
-	/**
-	 * Shuffles the given array of integers
-	 * @param set Array of integers to be shuffled
-	 */
-	public static void shuffle(double[] set) {
-		int j, k;
-		double temp;
-		int[] indices = nsgl.integer.array.Util.shuffle_indices(set.length);
-		for (int i = 0; i<indices.length; i+=2) {
-			j = indices[i];
-			k = indices[i+1];
-			temp = set[j];
-			set[j] = set[k];
-			set[k] = temp;
-		}
-	}
-
 }

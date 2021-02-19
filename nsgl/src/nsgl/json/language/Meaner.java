@@ -1,7 +1,7 @@
 package nsgl.json.language;
 
 
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.json.JSON;
 import nsgl.pair.Pair;
 import nsgl.service.io.Token;
@@ -21,7 +21,7 @@ public class Meaner implements nsgl.language.Meaner{
 	case Obj.TAG:
 	    JSON json = new JSON();
 	    @SuppressWarnings("unchecked") 
-	    Vector<Token> attr = (Vector<Token>)obj.value();
+	    Array<Token> attr = (Array<Token>)obj.value();
 	    for(Token a:attr) {
 		@SuppressWarnings("unchecked")
 		Pair<String,Object> p = (Pair<String,Object>)inner_apply(a);
@@ -33,9 +33,9 @@ public class Meaner implements nsgl.language.Meaner{
 	    Object value = inner_apply(pair[1]);
 	    return new Pair<String,Object>((String)pair[0].value(), value);
 	case List.TAG:
-	    Vector<Object> a = new Vector<Object>();
+	    Array<Object> a = new Array<Object>();
 	    @SuppressWarnings("unchecked") 
-	    Vector<Token> l = (Vector<Token>)obj.value();
+	    Array<Token> l = (Array<Token>)obj.value();
 	    for(Token x:l) {
     		Object y = inner_apply(x);
     		a.add(y);

@@ -4,7 +4,6 @@ import java.util.Iterator;
 import nsgl.bit.random.Random;
 import nsgl.integer.random.Uniform;
 import nsgl.object.Copyable;
-import nsgl.random.raw.RawGenerator;
 
 /**
  * <p>Title: Array</p>
@@ -17,7 +16,7 @@ import nsgl.random.raw.RawGenerator;
  *
  */
 
-public class Array implements nsgl.array.Array<Boolean>, Copyable{
+public class Array implements Iterable<Boolean>, Copyable{
 	/**
 	 * Integer array used to store the bits
 	 */
@@ -39,8 +38,8 @@ public class Array implements nsgl.array.Array<Boolean>, Copyable{
 	}
 	
 	public Array( int n ) {
-		this.n = n;
-		int m = getIndex(n) + 1;
+	    this.n = n;
+	    int m = getIndex(n) + 1;
 	    data = new int[m];
 	}
 
@@ -67,16 +66,14 @@ public class Array implements nsgl.array.Array<Boolean>, Copyable{
 	 * @param n The size of the bit array
 	 * @param rand Raw generator for initializing the bit array
 	 */
-	public Array(int n, RawGenerator rand) {
+	public Array(int n, boolean rand) {
 		this(n);
 		Uniform g = new Uniform(nsgl.integer.Util.HIGHEST_BIT >>> 1);
 		Random rg = new Random();
-		if(rand!=null) {
-			g.raw(rand);
-			rg.raw(rand);
-		}
-		g.generate( data, 0, n );
-		for (int i = 0; i<n; i++) if(rg.next()) data[i] = -data[i]; 
+		if(rand) {
+		    g.generate( data, 0, n );
+		    for (int i = 0; i<n; i++) if(rg.next()) data[i] = -data[i];
+		}    
 	}
 
 	@Override
@@ -554,22 +551,13 @@ public class Array implements nsgl.array.Array<Boolean>, Copyable{
 	};
   }
   
-	@Override
-	public boolean remove(Integer index) { return remove((int)index); }
 
-	@Override
-	public boolean set(Integer index, Boolean data){ return set((int)index,(boolean)data); }
-
-	@Override
-	public Boolean get(Integer index) { return get((int)index); }	
-	
 	public boolean remove(int index) {
 	    del(index);
 	    return true;
 	}
 
-	@Override
-	public nsgl.array.Array<Boolean> instance(int size) {
+	public Array instance(int size) {
 	    return new Array(size);
 	}
 }

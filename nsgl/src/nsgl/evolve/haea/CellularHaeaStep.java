@@ -1,5 +1,5 @@
 package nsgl.evolve.haea;
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.ca.*;
 import nsgl.tagged.Tagged;
 import nsgl.search.selection.Selection;
@@ -40,8 +40,8 @@ public class CellularHaeaStep<T> extends HaeaStep<T> {
      * @param population Full Population
      * @return A subpopulation that can be used for selecting a second parent
      */
-    public Vector<Integer> select( int id, Tagged<T>[] population ){
-        Vector<Integer> pop = new Vector<Integer>();
+    public Array<Integer> select( int id, Tagged<T>[] population ){
+        Array<Integer> pop = new Array<Integer>();
         int[][] neighboor = ca.neighborhood(id);
         int i=0;
         while( neighboor[i][0] >= 0 ){

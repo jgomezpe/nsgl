@@ -1,6 +1,6 @@
 package nsgl.graph.search.uninformed;
 
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.graph.OptionCost;
 import nsgl.graph.GraphSpace;
 import nsgl.graph.search.ClassicSearch;
@@ -27,8 +27,8 @@ public class IteratedDepthFirstSearch<T,O> extends ClassicSearch<T,O>{
 
   public void add( ClassicSearchNode<T,O> child ){}
 
-  public Vector<O> apply( T initial, GraphSpace<T,O> space, Goal<T,Boolean> goal, OptionCost<T,O> cost ){
-    Vector<O> path = null;
+  public Array<O> apply( T initial, GraphSpace<T,O> space, Goal<T,Boolean> goal, OptionCost<T,O> cost ){
+    Array<O> path = null;
     int depth = 0;
     while( path != null && depth < max_depth ){
       depth++;

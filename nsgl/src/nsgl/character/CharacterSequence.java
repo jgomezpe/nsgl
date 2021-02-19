@@ -43,7 +43,7 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 
-import nsgl.array.Vector;
+import nsgl.array.Array;
 
 /**
  * <p>Title: CharacterSequence</p>
@@ -58,7 +58,7 @@ public class CharacterSequence implements CharSequence{
 	 * <p>Description: Helper class for tracking the position (row,column) of characters in the CharSequence</p>
 	 *
 	 */
-	protected class Rows extends Vector<Integer>{
+	protected class Rows extends Array<Integer>{
 		/**
 		 * Gets the absolute position of the last found row 
 		 * @return Absolute position of the last found row

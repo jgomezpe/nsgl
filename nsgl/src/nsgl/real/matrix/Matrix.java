@@ -313,7 +313,7 @@ public class Matrix {
         if (flag) {
             for (int i = 0; flag && i < n - 1; i++) {
                 for (int j = i + 1; flag && j < n; j++) {
-                    flag = nsgl.real.Util.equal(A[i][j], A[j][i]);
+                    flag = nsgl.real.PrecisionOrder.isZero(A[i][j]-A[j][i]);
                 }
             }
         }
@@ -341,7 +341,8 @@ public class Matrix {
         if (flag) {
             for (int i = 0; flag && i < n - 1; i++) {
                 for (int j = i + 1; flag && j < n; j++) {
-                    flag = (nsgl.real.Util.isZero(A[i][j]) && nsgl.real.Util.isZero(A[j][i]));
+                    flag = (nsgl.real.PrecisionOrder.isZero(A[i][j]) && 
+                	    nsgl.real.PrecisionOrder.isZero(A[j][i]));
                 }
             }
         }

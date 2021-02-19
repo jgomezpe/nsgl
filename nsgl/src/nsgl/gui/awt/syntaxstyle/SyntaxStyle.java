@@ -3,7 +3,7 @@ package nsgl.gui.awt.syntaxstyle;
 import java.io.IOException;
 
 import nsgl.json.Castable;
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.hash.HashMap;
 import nsgl.keymap.KeyMap;
 import nsgl.service.io.Read;
@@ -54,7 +54,7 @@ public class SyntaxStyle implements Castable{
 			JSON json = (JSON)Read.get(JSON.class,styles);
 			HashMap<String, SyntaxStyle> km = new HashMap<String,SyntaxStyle>();
 			@SuppressWarnings("unchecked")
-			Vector<Object> objs = (Vector<Object>)json.get(STYLES);
+			Array<Object> objs = (Array<Object>)json.get(STYLES);
 			for( Object o:objs ){
 				SyntaxStyle style = new SyntaxStyle((JSON)o);
 				km.set(style.tag,style);

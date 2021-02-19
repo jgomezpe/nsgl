@@ -17,7 +17,7 @@ public class Parser implements Lexeme<byte[]>{
 	public Parser(boolean useStarter ) { this.useStarter = useStarter; }
 
 	public boolean valid(char c) {
-	    return Character.isLetterOrDigit(c)||c=='+'||c=='-';
+	    return Character.isLetterOrDigit(c)||c=='+'||c=='/';
 	}
 	
 	@Override

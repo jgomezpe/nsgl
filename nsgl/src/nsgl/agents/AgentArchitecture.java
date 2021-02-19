@@ -1,5 +1,5 @@
 package nsgl.agents;
-import nsgl.array.Vector;
+import nsgl.array.Array;
 
 /**
  * <p>Title: AgentArchitecture </p>
@@ -17,5 +17,5 @@ public interface AgentArchitecture {
 	public Percept sense( Agent agent );
 	public boolean act( Agent agent, Action action );
 	public void init( Agent agent );
-	public Vector<Action> actions();
+	public Array<Action> actions();
 }

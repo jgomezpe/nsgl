@@ -1,6 +1,7 @@
 package nsgl.agents;
 
-import nsgl.array.Vector;
+import nsgl.array.Array;
+import nsgl.object.Searchable;
 
 /**
  * <p>Title: Kernel </p>
@@ -22,26 +23,30 @@ public class Kernel implements Runnable{
 	/**
 	 * Collection of agents in the problem
 	 */
-	protected Vector<Agent> agents;
+	protected Array<Agent> agents;
 
 	public Kernel( Agent agent ){
-		agents = new Vector<Agent>();
+		agents = new Array<Agent>();
 		agents.add(agent);
 	}
 
-	public Kernel( Vector<Agent> _agents ) { agents = _agents; }
+	public Kernel( Array<Agent> _agents ) { agents = _agents; }
 
 	public Agent getAgent( int index ){ try{ return agents.get(index); }catch(Exception e){ return null; } }
 
 	public Agent getAgent(){ return getAgent(0); }
 
 	public boolean addAgent( Agent agent ){
-		boolean cflag = !agents.contains(agent);
+		boolean cflag = !Searchable.cast(agents).contains(agent);
 		if( cflag ) agents.add(agent);
 		return cflag;
 	}
 
-	public boolean delAgent( Agent agent ){	return agents.del(agent); }
+	public boolean delAgent( Agent agent ){
+	    Integer i = (Integer)Searchable.cast(agents).find(agent);
+	    if( i!=null ) return agents.remove(i);
+	    return false;
+	}
 
 	public void stop(){ 
 		flag = false;

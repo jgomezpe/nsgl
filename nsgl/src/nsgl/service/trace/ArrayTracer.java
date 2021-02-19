@@ -1,11 +1,11 @@
 package nsgl.service.trace;
-import nsgl.array.Vector;
+import nsgl.array.Array;
 
 public class ArrayTracer implements Tracer {
 	/**
 	 * Traced information
 	 */
-	private Vector<Object[]> object = new Vector<Object[]>();
+	private Array<Object[]> object = new Array<Object[]>();
 	
 	private int each=1;
 	private int count = 0;

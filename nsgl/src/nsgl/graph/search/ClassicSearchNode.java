@@ -1,5 +1,5 @@
 package nsgl.graph.search;
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.graph.GraphSpace;
 import nsgl.graph.PathUtil;
 
@@ -16,14 +16,14 @@ import nsgl.graph.PathUtil;
  * @version 1.0
  */
 public class ClassicSearchNode<T,O> {
-  protected Vector<O> path;
+  protected Array<O> path;
   protected double cost;
-  public ClassicSearchNode( Vector<O> _path, double _cost ) {
+  public ClassicSearchNode( Array<O> _path, double _cost ) {
     path = _path;
     cost = _cost;
   }
   
-  public Vector<O> path(){
+  public Array<O> path(){
 	  return path;
   }
   

@@ -1,12 +1,12 @@
 package nsgl.language;
 
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.language.lexeme.Space;
 import nsgl.service.io.Read;
 import nsgl.service.io.Source;
 import nsgl.service.io.Token;
 
-public abstract class Lexer implements Read<Vector<Token>>{
+public abstract class Lexer implements Read<Array<Token>>{
     public static final String TOKEN_LIST = "Vector<Token>";
 
     protected String[] removableTokens;
@@ -64,7 +64,7 @@ public abstract class Lexer implements Read<Vector<Token>>{
     
     public Token match(Source input, int start, int end) {
 	init(input,start,end);
-	Vector<Token> list = new Vector<Token>();
+	Array<Token> list = new Array<Token>();
 	Token t;
 	while((t=next())!=null && t.type()!=Token.ERROR) { list.add(t); }
 	if(t==null)
@@ -73,12 +73,12 @@ public abstract class Lexer implements Read<Vector<Token>>{
 	    return t;
     }
     
-    public static Vector<Token> remove(Vector<Token> tokens, String toremove ){
+    public static Array<Token> remove(Array<Token> tokens, String toremove ){
 	for( int i=tokens.size()-1; i>=0; i-- )	if( toremove.indexOf(tokens.get(i).type()) >= 0 ) tokens.remove(i);
 	return tokens;
     }
 	
-    public static Vector<Token> remove_space(Vector<Token> tokens ){ 
+    public static Array<Token> remove_space(Array<Token> tokens ){ 
 	return remove(tokens, Space.TAG); 
     }	
 }

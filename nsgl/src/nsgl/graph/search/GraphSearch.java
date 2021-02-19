@@ -1,5 +1,5 @@
 package nsgl.graph.search;
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.graph.OptionCost;
 import nsgl.graph.GraphSpace;
 import nsgl.graph.PathUtil;
@@ -28,14 +28,14 @@ public abstract class GraphSearch<T,O> extends LocalSearch<T,Boolean>{
 	@Override
 	public void setGoal(Goal<T, Boolean> goal) { this.goal = goal; }
 
-	public abstract Vector<O> apply( T initial, GraphSpace<T,O> space, Goal<T,Boolean> goal, OptionCost<T,O> cost  );
+	public abstract Array<O> apply( T initial, GraphSpace<T,O> space, Goal<T,Boolean> goal, OptionCost<T,O> cost  );
   
 	public Tagged<T> apply( Tagged<T> x, Space<T> space ){
 		@SuppressWarnings("unchecked")
 		GraphSpace<T,O> g_space = (GraphSpace<T,O>)space;
 		Goal<T,Boolean> goal = goal();
 		OptionCost<T,O> cost = g_space.cost();
-		Vector<O> action = apply( x.unwrap(), g_space, goal, cost);
+		Array<O> action = apply( x.unwrap(), g_space, goal, cost);
 		PathUtil<T,O> path = new PathUtil<T,O>();
 		T y = path.final_state(x.unwrap(), g_space, action);
 		Tagged<T> sol = new Tagged<T>(y);

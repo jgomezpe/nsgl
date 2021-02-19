@@ -2,11 +2,11 @@ package nsgl.agents.simulate.util;
 
 
 import nsgl.agents.*;
-import nsgl.array.Vector;
+import nsgl.array.Array;
 
 
 public class InteractiveAgentProgram implements AgentProgram{
-  protected Vector<String> cmds = new Vector<String>();
+  protected Array<String> cmds = new Array<String>();
   protected Language language;
   public static  InteractiveAgentFrame frame = null;
   public InteractiveAgentProgram(Language _language){

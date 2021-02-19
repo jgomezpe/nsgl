@@ -61,7 +61,7 @@ public class IntHyperCube implements Space<int[]>{
 
 	@Override
 	public int[] pick() {
-		RawGenerator g = RawGenerator.cast(this);
+		RawGenerator g = RawGenerator.get();
 		int[] x = new int[min.length];
 		for( int i=0; i<x.length; i++){
 			x[i] = min[i] + g.integer(length[i]);

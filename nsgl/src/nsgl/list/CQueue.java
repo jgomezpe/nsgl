@@ -61,6 +61,12 @@ public class CQueue<T> implements Collection<T>{
 	}
 
 	/**
+	 * Determines if the collection is empty or not
+	 * @return <i>true</i> if the collection is empty <i>false</i> otherwise
+	 */
+	public boolean isEmpty() { return size()==0; };     
+	
+	/**
 	 * Adds a new object to the circular queue. The object is added after the current object in the queue. The cursor is not moved.
 	 * <p>C = a -> b -> c -> d --> a</p>
 	 * <p>C.add( x ) =>  C = a -> x -> b -> c -> d --> a</p>
@@ -123,6 +129,5 @@ public class CQueue<T> implements Collection<T>{
 	    return c.ne(x.data);
 	}
 
-	@Override
 	public int size() { return size; }
 }

@@ -67,7 +67,7 @@ public class Parser implements Lexeme<String>{
 
     @Override
     public Token match(Source txt, int start, int end) {
-	if(!this.startsWith(quotation)) return error(txt, start, start);
+	if(!this.startsWith(txt.get(start))) return error(txt, start, start);
 	int n = end;
 	end = start+1;
 	if(end==n) return error(txt, start, end);

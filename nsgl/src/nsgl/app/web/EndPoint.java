@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import nsgl.app.Application;
 import nsgl.app.net.Channel;
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.list.Queue;
 import nsgl.json.JSON;
 import nsgl.stream.Util;
@@ -48,7 +48,7 @@ public class EndPoint extends HttpServlet implements Channel{
         	    pack = Channel.pack(buffer);
         	    coms = Channel.commands(pack);
         	    user = Channel.credential(pack);
-        	    Vector<JSON> commands = new Vector<JSON>();
+        	    Array<JSON> commands = new Array<JSON>();
     		    for( int i=0; i<coms.length; i++ ) {
     			JSON c = (JSON)coms[i];
     			try {

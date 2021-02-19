@@ -1,6 +1,6 @@
 package nsgl.graph;
 
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.search.space.Space;
 
 /**
@@ -17,6 +17,6 @@ import nsgl.search.space.Space;
  */
 public interface GraphSpace<T,O>  extends Space<T>{
 	public T succesor( T state, O action );
-	public Vector<O> succesor( T state );
+	public Array<O> succesor( T state );
 	public OptionCost<T,O> cost();
 }

@@ -1,13 +1,13 @@
 package nsgl.service.io;
 
 import nsgl.array.SortedSearch;
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.integer.L2HOrder;
 import nsgl.object.Named;
 
 public class Source extends Named{
     protected String input;
-    protected Vector<Integer> rows = new Vector<Integer>();
+    protected Array<Integer> rows = new Array<Integer>();
     protected SortedSearch search = new SortedSearch(new L2HOrder());
     public Source(String input) {
 	this("noname", input);

@@ -54,7 +54,7 @@ public class HyperCube implements Space<double[]> {
     
     @Override
     public double[] pick(){
-    	RawGenerator g = RawGenerator.cast(this);
+    	RawGenerator g = RawGenerator.get();
     	double[] x = new double[min.length];
     	for( int i=0; i<x.length; i++ ) x[i] = min[i] + (max[i]-min[i])*g.next();
     	return x;

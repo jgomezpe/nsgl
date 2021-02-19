@@ -5,15 +5,16 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Enumeration;
 
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.object.Loadable;
+import nsgl.object.Searchable;
 
 public class NSGLClassLoader extends ClassLoader{
-	protected Vector<ClassLoader> loader = new Vector<ClassLoader>();
+	protected Array<ClassLoader> loader = new Array<ClassLoader>();
 	
 	public void addLoader( ClassLoader cl ) { loader.add(cl); }
 	public void delLoader( ClassLoader cl ) { 
-		Integer i = loader.find(cl);
+		Integer i = (Integer)Searchable.cast(loader).find(cl);
 		if( i!=null ) loader.remove(i);
 	}
 	public void clear() { loader.clear(); }

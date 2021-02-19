@@ -1,5 +1,5 @@
 package nsgl.graph;
-import nsgl.array.Vector;
+import nsgl.array.Array;
 
 /**
  * <p>Title: </p>
@@ -14,7 +14,7 @@ import nsgl.array.Vector;
  * @version 1.0
  */
 public class PathUtil<T,O>{
-  public double evaluate( T state, GraphSpace<T,O> space, Vector<O> path, OptionCost<T,O> cost ){
+  public double evaluate( T state, GraphSpace<T,O> space, Array<O> path, OptionCost<T,O> cost ){
     double c = 0.0;
     for(O action : path){
       c += cost.evaluate( state, action);
@@ -23,7 +23,7 @@ public class PathUtil<T,O>{
     return c;
   }
   
-  public T final_state( T initial, GraphSpace<T,O> space, Vector<O> path ){
+  public T final_state( T initial, GraphSpace<T,O> space, Array<O> path ){
       for(O action : path){
         initial = space.succesor( initial, action );
       }

@@ -26,7 +26,7 @@ public class GeneXOver extends LinearXOver {
    */
   @Override
   public double[][] apply( double[] c1, double[] c2) {
-      RawGenerator g = RawGenerator.cast(this);
+      RawGenerator g = RawGenerator.get();
       double[] x = c1.clone();
       double[] y = c2.clone();
       int min = Math.min(x.length, y.length);

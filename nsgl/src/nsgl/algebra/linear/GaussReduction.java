@@ -1,6 +1,6 @@
 package nsgl.algebra.linear;
 
-import nsgl.real.Util;
+import nsgl.real.PrecisionOrder;
 import nsgl.real.matrix.Matrix;
 
 /**
@@ -29,7 +29,7 @@ public class GaussReduction extends LinearSystemSolver{
           }
           for (int i = 0; i < n; i++) {
             int k = i;
-            while (k < m && Math.abs(A[i][k]) <= Util.PRECISION) { k++; }
+            while (k < m && PrecisionOrder.isZero(A[i][k])) { k++; }
             if (k < m) {
               if (k != i) {
                 int ti = perm[i];
@@ -56,13 +56,8 @@ public class GaussReduction extends LinearSystemSolver{
                   b[k] -= pivot * b[i];
                 }
               }
-            } else {
-              if (Math.abs(b[i]) > Util.PRECISION) {
-                return null;
-              }else{
-                  b[i] = Double.POSITIVE_INFINITY;
-              }
-            }
+            } else if(PrecisionOrder.isZero(b[i])) b[i] = Double.POSITIVE_INFINITY;
+              else return null;
           }
           x = new double[m];
           for( int i=0; i<m; i++ ){

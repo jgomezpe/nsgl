@@ -52,6 +52,18 @@ import nsgl.pair.Pair;
  */
 public interface KeyMap<K,V> extends Collection<V>{
     /**
+     * Determines if the collection is empty or not
+     * @return <i>true</i> if the collection is empty <i>false</i> otherwise
+     */
+    default boolean isEmpty() { return size()==0; };     
+
+    /**	
+     * Determines the number of objects stored by the collection
+     * @return Number of objects stored by the collection. If -1 is returned then the size of the collection is not defined.
+     */
+    int size();
+
+    /**
      * Determines if the given object belongs to the collection
      * @param data Data object to be located
      * @return <i>true</i>If the object belongs to the collection, <i>false</i> otherwise

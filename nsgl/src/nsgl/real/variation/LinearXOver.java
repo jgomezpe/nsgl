@@ -29,7 +29,7 @@ public class LinearXOver extends RealArityTwo{
         double[] x = c1.clone();
         double[] y = c2.clone();
         int min = Math.min(x.length, y.length);
-        RawGenerator g = RawGenerator.cast(this);
+        RawGenerator g = RawGenerator.get();
         double alpha = g.next();
         double alpha_1 = g.next();
         double neg_alpha = 1.0 - alpha;

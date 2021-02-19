@@ -1,6 +1,6 @@
 package nsgl.agents.simulate;
 import nsgl.agents.*;
-import nsgl.array.Vector;
+import nsgl.array.Array;
 
 /**
  * <p>Title: </p>
@@ -15,7 +15,7 @@ import nsgl.array.Vector;
  * @version 1.0
  */
 public class SimulatedKernel extends Kernel{
-  public SimulatedKernel(Vector<Agent> _agents, Environment environment ) {
+  public SimulatedKernel(Array<Agent> _agents, Environment environment ) {
     super( _agents );
     int n = agents.size();
     try{ for( int i=0; i<n; i++ ) agents.set( i, new SimulatedAgent(environment, agents.get(i).getProgram()) ); }catch(Exception e){}

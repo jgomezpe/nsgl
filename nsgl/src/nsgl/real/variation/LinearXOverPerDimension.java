@@ -27,7 +27,7 @@ public class LinearXOverPerDimension extends LinearXOver{
   public double[][] apply(double[] c1, double[] c2) {
       double[] x = c1.clone();
       double[] y = c2.clone();
-      RawGenerator g = RawGenerator.cast(this);
+      RawGenerator g = RawGenerator.get();
       double a;
       double a_1;
       double tx, ty;

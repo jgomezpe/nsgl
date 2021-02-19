@@ -1,7 +1,7 @@
 package nsgl.evolve.haea;
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.integer.random.Roulette;
-import nsgl.random.raw.UsesRawGenerator;
+import nsgl.random.raw.RawGenerator;
 import nsgl.real.array.Util;
 import nsgl.search.variation.Variation;
 
@@ -15,7 +15,7 @@ import nsgl.search.variation.Variation;
  * @author Jonatan Gomez
  * @version 1.0
  */
-public abstract class HaeaOperators<T> implements UsesRawGenerator{
+public abstract class HaeaOperators<T> {
     /**
      * Roulette selection mechanism (for selecting the genetic operator)
      */
@@ -24,17 +24,17 @@ public abstract class HaeaOperators<T> implements UsesRawGenerator{
     /**
      * Rates associated to each genetic operator per individual
      */
-    protected Vector<double[]> rates = new Vector<double[]>();
+    protected Array<double[]> rates = new Array<double[]>();
     
     /**
      * Selected operator
      */
-    protected Vector<Integer> sel_oper = new Vector<Integer>();
+    protected Array<Integer> sel_oper = new Array<Integer>();
 
     /**
      * Selected operator
      */
-    protected Vector<Integer> size_offspring_sel_oper = new Vector<Integer>();
+    protected Array<Integer> size_offspring_sel_oper = new Array<Integer>();
 
     /**
      * Number of genetic operators per individual
@@ -98,7 +98,7 @@ public abstract class HaeaOperators<T> implements UsesRawGenerator{
      */
     public void reward(double[] r, int operIndex) {
         if( operIndex >= 0 ){
-            r[operIndex] += (1.0 - r[operIndex]) * raw().next();
+            r[operIndex] += (1.0 - r[operIndex]) * RawGenerator.get().next();
             Util.normalize(r);
         }
     }
@@ -110,7 +110,7 @@ public abstract class HaeaOperators<T> implements UsesRawGenerator{
      */
     public void punish(double[] r, int operIndex) {
         if( operIndex >= 0 ){
-            r[operIndex] -= r[operIndex] * raw().next();
+            r[operIndex] -= r[operIndex] * RawGenerator.get().next();
             Util.normalize(r);
         }    
     }
@@ -136,7 +136,7 @@ public abstract class HaeaOperators<T> implements UsesRawGenerator{
         int m = rates.size();
         if( m < n ){
             for( int i=m; i<n; i++){
-                double[] r = raw().raw( numberOfOperatorsPerIndividual() );
+                double[] r = RawGenerator.get().raw( numberOfOperatorsPerIndividual() );
                 Util.normalize(r);
                 rates.add(r);            
                 sel_oper.add(-1);
@@ -163,5 +163,5 @@ public abstract class HaeaOperators<T> implements UsesRawGenerator{
      * Genetic operator rates
      * @return Genetic operator rates
      */
-    public Vector<double[]> rates(){ return rates; }
+    public Array<double[]> rates(){ return rates; }
 }

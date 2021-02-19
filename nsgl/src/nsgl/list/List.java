@@ -65,6 +65,12 @@ public class List<T> implements Collection<T>{
     }
 
     /**
+     * Determines if the collection is empty or not
+     * @return <i>true</i> if the collection is empty <i>false</i> otherwise
+     */
+    public boolean isEmpty() { return size()==0; };     
+
+    /**
      * Determines the number of objects stored by the data structure
      * @return Number of objects stored by the data structure
      */

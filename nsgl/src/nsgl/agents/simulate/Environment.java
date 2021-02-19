@@ -2,7 +2,8 @@ package nsgl.agents.simulate;
 
 import nsgl.agents.*;
 import nsgl.agents.simulate.gui.*;
-import nsgl.array.Vector;
+import nsgl.array.Array;
+import nsgl.object.Searchable;
 
 /**
  * <p>Title: Environment </p>
@@ -18,25 +19,28 @@ import nsgl.array.Vector;
  */
 public abstract class Environment extends Kernel implements AgentArchitecture{
 	protected long delay = 0;
-	protected Vector<EnvironmentView> views = new Vector<EnvironmentView>();
+	protected Array<EnvironmentView> views = new Array<EnvironmentView>();
 
 	public Environment( Agent agent ) {
 		super(agent);
-		Vector<Agent> newagents = new Vector<Agent>();
+		Array<Agent> newagents = new Array<Agent>();
 		for( Agent a: agents ) newagents.add( new SimulatedAgent( this, a.getProgram()) );
 		agents = newagents;
 	}
 
-	public Environment( Vector<Agent> _agents ) {
+	public Environment( Array<Agent> _agents ) {
 		super( _agents );
-		Vector<Agent> newagents = new Vector<Agent>();
+		Array<Agent> newagents = new Array<Agent>();
 		for( Agent a: agents ) newagents.add( new SimulatedAgent( this, a.getProgram()) );
 		agents = newagents;
 	}
 
 	public void setDelay( long _delay ){ delay = _delay; }
 
-	public void registerView( EnvironmentView view ){ if( !views.contains(view) ) views.add(view); }
+	public void registerView( EnvironmentView view ){ 
+	    if( !Searchable.cast(views).contains(view) ) 
+		views.add(view); 
+	}
 
 	public void updateViews( String message ){ for( EnvironmentView v:views ) v.envChanged( message ); }
   

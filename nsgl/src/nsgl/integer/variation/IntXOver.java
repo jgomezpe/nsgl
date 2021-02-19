@@ -49,6 +49,6 @@ public class IntXOver implements Variation_2_2<int[]>{
 	 */
 	@Override
 	public int[][] apply( int[] child1, int[] child2 ){
-		return generates(child1, child2, RawGenerator.cast(this).integer(Math.min(child1.length, child2.length)));
+		return generates(child1, child2, RawGenerator.get().integer(Math.min(child1.length, child2.length)));
 	}
 }

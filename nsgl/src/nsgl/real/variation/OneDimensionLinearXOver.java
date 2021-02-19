@@ -27,7 +27,7 @@ public class OneDimensionLinearXOver extends SimpleXOver {
       double[] y = c2.clone();
       int pos = pos(x.length, y.length);
 
-      double alpha = RawGenerator.cast(this).next();
+      double alpha = RawGenerator.get().next();
       double alpha_1 = 1.0 - alpha;
       double tx, ty;
       tx = x[pos];

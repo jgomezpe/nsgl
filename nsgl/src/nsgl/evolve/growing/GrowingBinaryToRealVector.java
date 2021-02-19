@@ -70,7 +70,7 @@ public class GrowingBinaryToRealVector extends CodeDecodeMap<Array, double[]>{
       int n = 32;
       GrowingBinaryToRealVector p = new GrowingBinaryToRealVector(n);
       for( int i=0; i<10; i++ ){
-    	  Array g = new Array(n, null);
+    	  Array g = new Array(n, true);
           System.out.println(g.toString());
           System.out.println(p.decode(g)[0]);
       }

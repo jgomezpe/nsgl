@@ -1,6 +1,6 @@
 package nsgl.graph.search;
 
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.graph.*;
 import nsgl.object.Copyable;
 import nsgl.search.Goal;
@@ -18,11 +18,11 @@ import nsgl.search.Goal;
  * @version 1.0
  */
 public abstract class ClassicSearch<T,O> extends GraphSearch<T,O> {
-	protected Vector<ClassicSearchNode<T,O>> list;
+	protected Array<ClassicSearchNode<T,O>> list;
 	protected int max_depth;
 	public ClassicSearch( int _max_depth ) {
 		max_depth = _max_depth;
-		list = new Vector<ClassicSearchNode<T,O>>();
+		list = new Array<ClassicSearchNode<T,O>>();
 	}
 
 	public abstract void add( ClassicSearchNode<T,O> child );
@@ -33,21 +33,21 @@ public abstract class ClassicSearch<T,O> extends GraphSearch<T,O> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Vector<O> apply( T initial, GraphSpace<T,O> space, Goal<T,Boolean> goal, OptionCost<T,O> cost ){
+	public Array<O> apply( T initial, GraphSpace<T,O> space, Goal<T,Boolean> goal, OptionCost<T,O> cost ){
 		list.clear();
-		ClassicSearchNode<T,O> node = new ClassicSearchNode<T,O>( new Vector<O>(), 0.0 );
+		ClassicSearchNode<T,O> node = new ClassicSearchNode<T,O>( new Array<O>(), 0.0 );
 		list.add(node);
 		T state = initial;
 		while( node != null && !goal.apply(state) ){
 			list.remove(0);
 			if( node.path.size() < max_depth ){
-				Vector<O> actions = space.succesor(state);
+				Array<O> actions = space.succesor(state);
 				for(O action : actions) {
 					T child_state = space.succesor(state, action);
 					if( space.feasible(child_state) ){
 						double path_cost = evaluate(state, action, node.cost, cost);
-						Vector<O> path;
-						path = (Vector<O>)Copyable.cast(node.path).copy();
+						Array<O> path;
+						path = (Array<O>)Copyable.cast(node.path).copy();
 						path.add(action);
 						ClassicSearchNode<T,O> child_node = new ClassicSearchNode<T,O>( path, path_cost);
 						add(child_node);

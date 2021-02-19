@@ -1,6 +1,6 @@
 package nsgl.language.lookahead;
 
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.hash.HashMap;
 import nsgl.language.lexeme.Lexeme;
 import nsgl.service.io.Token;
@@ -33,8 +33,8 @@ public class Lexer extends nsgl.language.Lexer{
     protected Token get() {
 	if(start>=end) return null;
 	char c = input.get(start);
-	Vector<Token> opt = new Vector<Token>();
-	Vector<Token> error = new Vector<Token>();
+	Array<Token> opt = new Array<Token>();
+	Array<Token> error = new Array<Token>();
 	for( Lexeme<?> l:lexeme ) {
 	    if(l.startsWith(c)) {
 		Token t = l.match(input, start, end);

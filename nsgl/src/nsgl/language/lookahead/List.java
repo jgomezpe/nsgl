@@ -1,6 +1,6 @@
 package nsgl.language.lookahead;
 
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.service.io.Source;
 import nsgl.service.io.Token;
 
@@ -33,7 +33,7 @@ public class List extends Rule{
 	Source input = current.input();
 	int start = current.start();
 	int end = current.end();
-	Vector<Token> list = new Vector<Token>();
+	Array<Token> list = new Array<Token>();
 	current = lexer.next();
 	while(current!=null && !check_symbol(current, RIGHT)){
 	    Token t = parser.rule(item_rule).analize(lexer, current);

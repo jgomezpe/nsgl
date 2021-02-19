@@ -49,7 +49,7 @@ public class AddGen implements Variation_1_1<Array>, ParameterizedObject<int[]> 
       try{
           Array genome = (Array)gen.copy();
           if (genome.size() < max_length) {
-              Array gene = new Array(gene_size, null);
+              Array gene = new Array(gene_size, true);
               if (append) genome.add(gene);
               else{
                   int size = (genome.size() - min_length) / gene_size;

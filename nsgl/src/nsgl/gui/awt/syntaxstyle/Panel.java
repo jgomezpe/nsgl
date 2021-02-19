@@ -13,7 +13,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
-import nsgl.array.Vector;
+import nsgl.array.Array;
 import nsgl.keymap.KeyMap;
 import nsgl.language.Lexer;
 import nsgl.service.io.Token;
@@ -82,7 +82,7 @@ public class Panel extends JTextPane implements Component{
 	    Element paragraph = root.getElement(root.getElementIndex(pos));
 	    int start = paragraph.getStartOffset();
 	    int end = length==0?paragraph.getEndOffset():pos+length;
-	    Vector<Token> changes = new Vector<Token>();
+	    Array<Token> changes = new Array<Token>();
 	    lexer.removeTokens(false);
 	    while(start<end){
 		Element p = root.getElement(root.getElementIndex(start));

@@ -92,7 +92,7 @@ public class Stringifier implements nsgl.stringify.Stringifier{
 	@Override
 	public String stringify(Object obj) {
 		if( obj.getClass().isArray() ) return stringify(obj, 0, java.lang.reflect.Array.getLength(obj));
-		if( obj instanceof Static ) return stringify(((Static<?>)obj).buffer, 0, ((Static<?>)obj).size);
+		if( obj instanceof Array ) return stringify(((Array<?>)obj).buffer, 0, ((Array<?>)obj).size);
 		return obj.toString();
 	}
 }

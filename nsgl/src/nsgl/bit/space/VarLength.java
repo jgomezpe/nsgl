@@ -31,7 +31,7 @@ public class VarLength implements nsgl.search.space.Space<Array> {
 		int maxLength = minLength + maxVarGenes * gene_size;
 		if( x.size() > maxLength ) return x.subArray(0,maxLength);
 		if( x.size() < minLength ){
-			Array x2 = new Array(minLength, null);
+			Array x2 = new Array(minLength, true);
 			try{ for( int i=0; i<minLength;i++)	x2.set(i,x.get(i)); }catch(Exception e){}
 			return x2;
 		}else return x;
@@ -40,6 +40,8 @@ public class VarLength implements nsgl.search.space.Space<Array> {
 	
 	@Override
 	public Array pick() {
-		return (maxVarGenes>0)?new Array(minLength+RawGenerator.cast(this).integer(maxVarGenes*gene_size), null):new Array(minLength, null);
+		if(maxVarGenes>0)
+		    return new Array(minLength+RawGenerator.get().integer(maxVarGenes*gene_size), true);
+		return new Array(minLength, true);
 	}
 }
